@@ -25,16 +25,10 @@ export class Model<T extends HasId> {
     private sync: ISync<T>,
     private events: IEventing
   ) {}
-  get get() {
-    return this.attributes.get;
-  }
-  get on() {
-    return this.events.on;
-  }
-
-  get trigger() {
-    return this.events.trigger;
-  }
+ readonly on= this.events.on;
+ readonly get= this.attributes.get;
+ readonly trigger= this.events.trigger;
+ 
   set(update: T) {
     this.attributes.set(update);
     this.events.trigger("change");

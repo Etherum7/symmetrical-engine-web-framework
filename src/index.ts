@@ -1,13 +1,8 @@
 import { User } from "./models/User";
 
-const user = User.buildUser({ id: 1 });
+const UserCollection = User.buildUserCollection();
 
-user.on("click", () => {
-  console.log(1);
+UserCollection.events.on("change", () => {
+  console.log(UserCollection);
 });
-user.on("click", () => {
-  console.log(1);
-});
-
-user.trigger("click");
-console.log(user.get("name"));
+UserCollection.fetch();
